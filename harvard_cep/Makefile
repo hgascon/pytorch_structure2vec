@@ -17,6 +17,7 @@ LDFLAGS += -lm -L$(RD_LIB) -lRDKitGraphMol -lRDKitRDGeneral -lRDKitSmilesParse -
 include_dirs = ./include $(RD_INC)
 
 CXXFLAGS += $(addprefix -I,$(include_dirs)) -Wno-unused-local-typedef
+CXXFLAGS += -Wl,-rpath='.',-rpath=$(RD_LIB)
 CXXFLAGS += -fPIC
 cpp_files = $(shell $(FIND) src/lib -name "*.cpp" -printf "%P\n")
 cxx_obj_files = $(subst .cpp,.o,$(cpp_files))
